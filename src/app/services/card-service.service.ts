@@ -5,18 +5,17 @@ import { Card } from '../models/card';
   providedIn: 'root'
 })
 export class CardServiceService {
- private url='https://localhost:5001/api/Cards/';
+ private url='https://localhost:5001/api/Card';
  list:any;
 
 
   constructor(private http:HttpClient) { }
 
   getCards(){
-    this.http.get(this.url).toPromise().then(
-      data=>{
-        this.list=data;  
-      }
-    )
+    return this.http.get(this.url);
+  }
+  postCards(){
+    
   }
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup,FormBuilder,Validators} from '@angular/forms'
 import { Card } from 'src/app/models/card';
 import { CardServiceService } from 'src/app/services/card-service.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-update-card',
   templateUrl: './create-update-card.component.html',
@@ -12,7 +12,8 @@ export class CreateUpdateCardComponent {
 
   form:FormGroup;
 
-  constructor(private fb:FormBuilder,private cardService:CardServiceService){
+  constructor(private fb:FormBuilder,private cardService:CardServiceService,
+              private router:Router){
     this.form=this.fb.group({
       id:0,
       userName:['',Validators.required],
@@ -38,6 +39,10 @@ export class CreateUpdateCardComponent {
   this.cardService.postCards(mycard).subscribe(data=>{
     console.log(data);
   })
+  }
+
+  goback(){
+      this.router.navigate(['/list']);
   }
 
 }

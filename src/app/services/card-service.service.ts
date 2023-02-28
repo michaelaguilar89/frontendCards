@@ -17,6 +17,16 @@ export class CardServiceService {
   }
   postCards(card:Card):Observable<Card>{
     return this.http.post<Card>(this.url,card);
+  }
+
+  putCard(card:Card){
+
+  }
+  getByIdCard(id:number){
+    
+  }
+
+  removeCard(id:number){
 
   }
 

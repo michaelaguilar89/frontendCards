@@ -28,15 +28,16 @@ export class CreateUpdateCardComponent {
   saveCard(){
     console.log(this.form.value);
     const mycard:Card={
+      Id:0,
       userName:this.form.get('userName')?.value,
-      cardNumber:this.form.get('CardNumber')?.value,
+      cardNUmber:this.form.get('cardNumber')?.value,
       expirationDate:this.form.get('expirationDate')?.value
 
     }
       
   this.cardService.postCards(mycard).subscribe(data=>{
     console.log(data);
-  })    
+  })
   }
 
 }

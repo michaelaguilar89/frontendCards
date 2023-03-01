@@ -1,1 +1,17 @@
-<p>get-by-id-remove-card works!</p>
+<div class="container">
+    <div class="col-md-8 mx-auto">
+        <div class="row ">
+            <div class="card border-secondary mx-auto my-auto mt-5 mb-5" >
+                <div class="card-header text-center">{{title}}</div>
+                <div class="card-body text-secondary mx-auto">
+                  
+                  <p class="card-text">Id : {{card.result.id}}</p>
+                  <p class="card-text">User Name : {{card.result.userName}}</p>
+                  <p class="card-text">Card Number : {{card.result.cardNUmber}}</p>
+                  <p class="card-text">Expiration Date : {{card.result.expirationDate}}</p>
+                  <button type="button" class="btn btn-secondary my-3 mx-3" (click)="goBack()" >Go Back</button>  
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

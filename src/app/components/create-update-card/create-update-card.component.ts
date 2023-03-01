@@ -48,7 +48,7 @@ export class CreateUpdateCardComponent implements OnInit,OnDestroy {
         
         })
         this._id=this.card.id;
-          if(this.card.id==undefined && this.cardService._title=='Update Card'){
+          if(this.card.id==undefined && this.cardService._title==''){
             this.router.navigate(['/list']);
           }
       })

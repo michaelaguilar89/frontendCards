@@ -45,7 +45,16 @@ export class ListCardComponent {
 
  
   }
-
+  getById(id:number){
+    this.Cardservice._title="Details Record";
+    this.Cardservice._id=id;
+      this.router.navigate(['/getById']);
+  }
+  remove(id:number){
+    this.Cardservice._title="Remove Record";
+    this.Cardservice._id=id;
+    this.router.navigate(['/remove']);
+  }
   new(){
     this.Cardservice._title='Create New Card';
     this.router.navigate(['/create']);

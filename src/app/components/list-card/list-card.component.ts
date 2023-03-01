@@ -27,7 +27,7 @@ export class ListCardComponent {
         this.list={ data }
         //console.log(this.list);
         this.showSuccess();
-        console.log(this.list.data.result.length)
+        console.log('length : '+this.list.data.result.length)
       })
       )
   } catch (error:any ) {
@@ -39,7 +39,8 @@ export class ListCardComponent {
   }
 
   update(element:Card){
-    this.Cardservice.update(element);
-    this.router.navigate(['/update']);
+   this.Cardservice.update(element);
+   this.router.navigate(['/update']);
+ 
   }
 }

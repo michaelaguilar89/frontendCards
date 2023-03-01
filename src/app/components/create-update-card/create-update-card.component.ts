@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators} from '@angular/forms'
 import { Card } from 'src/app/models/card';
 import { CardServiceService } from 'src/app/services/card-service.service';
@@ -12,14 +12,20 @@ import { Subscription } from 'rxjs';
   templateUrl: './create-update-card.component.html',
   styleUrls: ['./create-update-card.component.css']
 })
-export class CreateUpdateCardComponent {
+export class CreateUpdateCardComponent implements OnInit,OnDestroy {
 
   form:FormGroup;
+  subscription: any;
+ //subscription:Subscription;
+   card!: Card;
  
-  constructor(private fb:FormBuilder,private cardService:CardServiceService,
+  constructor(private fb:FormBuilder,
+              private cardService:CardServiceService,
               private router:Router,
               private toastr:ToastrService,
-              private subscription:Subscription){
+              
+              
+              ){
     this.form=this.fb.group({
       id:0,
       userName:['',Validators.required],
@@ -29,14 +35,21 @@ export class CreateUpdateCardComponent {
 
   }
   ngOnInit():void{
-     this.subscription = this.cardService.getCard$().subscribe(data=>{
-        console.log(data );
+    this.subscription = 
+    this.cardService.getCard$().subscribe(data=>{
+           console.log(data );
+          this.card=data;
+        this.form.patchValue({
+        userName:this.card.userName,
+        cardNumber:this.card.cardNUmber,
+        expirationDate:this.card.expirationDate
+        })
       })
   }
 
-  ngOnDestroy():void{
-    this.subscription.unsubscribe();
-  }
+ ngOnDestroy():void{
+  this.subscription.unsubscribe();
+ }
 
   saveCard(){
     console.log(this.form.value);

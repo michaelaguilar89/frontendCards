@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 //
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { GetByIdRemoveCardComponent } from './components/get-by-id-remove-card/get-by-id-remove-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateUpdateCardComponent,
     ListCardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GetByIdRemoveCardComponent
   ],
   imports: [
     BrowserModule,

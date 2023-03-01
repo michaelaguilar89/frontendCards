@@ -18,14 +18,25 @@ export class ListCardComponent {
   }
   
   ngOnInit(){
-    this.Cardservice.getCards().subscribe((data=>{
-      //console.log(data)
-      this.list={ data }
-      console.log(this.list);
-      this.showSuccess();
-    }))
+    try {
+    
+      this.Cardservice.getCards().subscribe((data=>{
+        //console.log(data)
+        this.list={ data }
+        //console.log(this.list);
+        this.showSuccess();
+        console.log(this.list.data.result.length)
+      })
+      )
+  } catch (error:any ) {
+    this.toastr.error('Error ',error)
+  }
   }
   showSuccess() {
     this.toastr.success('Getting data from server!', 'Data Colletion found!');
+  }
+
+  update(element:Card){
+    this.Cardservice.update(element);
   }
 }

@@ -27,7 +27,9 @@ export class CreateUpdateCardComponent {
 
   }
   ngOnInit():void{
-
+      this.cardService.getCard$().subscribe(data=>{
+        console.log('getting data from list : '+data );
+      })
   }
 
   saveCard(){

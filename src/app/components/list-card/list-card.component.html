@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-md-10">
             <h2 class="m-3 p-3">List of Cards</h2>
-            <table class="table table-responsive table-primary mt-3 mx-auto">
+            
+            <table class="table table-responsive table-primary mt-3 mx-auto" *ngIf="list.data.result.length>0">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -13,21 +14,28 @@
                   </tr>
                 </thead>
                 <tbody>
+                
+                 
                   <tr *ngFor="let element of list.data.result">
                     <th scope="row">{{element.id}}</th>
                     <td>{{element.userName}}</td>
                     <td>{{element.cardNUmber}}</td>
                     <td>{{element.expirationDate}}</td>
                     <td> 
-                      
-                      <button type="button" class="btn btn-secondary m-1">Details</button>
-                      <button type="button" class="btn btn-success m-1">Update</button>
-                      <button type="button" class="btn btn-danger">Delete</button>
+                      <div  class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">Details</button>
+                        <button type="button" class="btn btn-success" (click)="update(element)" >Update</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                      </div>
+              
                       
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <div class="row mt-5 mx-auto" *ngIf!="list.data.length==0">
+                <p>No data Found</p>
+              </div>
         </div>
     </div>
 </div>

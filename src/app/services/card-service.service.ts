@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Card } from '../models/card';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class CardServiceService {
  private url='https://localhost:5001/api/Card/';
  list:any;
+ private updateForm= new BehaviorSubject<Card>({}as any);
 
 
   constructor(private http:HttpClient) { }
@@ -18,15 +19,23 @@ export class CardServiceService {
   postCards(card:Card):Observable<Card>{
     return this.http.post<Card>(this.url,card);
   }
-
-  putCard(card:Card){
-
+  update(element:Card){
+    this.updateForm.next(element);
   }
-  getByIdCard(id:number){
-    
+
+  getCard$():Observable<Card>{
+    return this.updateForm.asObservable();
+  }
+
+  putCard(card:Card):Observable<Card>{
+    return this.http.put<Card>(this.url,card)
+  }
+  getByIdCard(id:number):Observable<Card>{
+    return this.http.get<Card>(this.url+id)
   }
 
   removeCard(id:number){
+    return this.http.delete<Card>(this.url+id);
 
   }
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CardServiceService } from 'src/app/services/card-service.service'
 import { Card } from 'src/app/models/card';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-card',
@@ -13,7 +14,8 @@ export class ListCardComponent {
 
   list:any=[];
   constructor(private Cardservice:CardServiceService,
-              private toastr: ToastrService){
+              private toastr: ToastrService,
+              private router:Router){
 
   }
   
@@ -38,5 +40,6 @@ export class ListCardComponent {
 
   update(element:Card){
     this.Cardservice.update(element);
+    this.router.navigate(['/update']);
   }
 }

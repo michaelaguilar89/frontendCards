@@ -4,6 +4,7 @@ import { Card } from 'src/app/models/card';
 import { CardServiceService } from 'src/app/services/card-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,10 +15,11 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateUpdateCardComponent {
 
   form:FormGroup;
-
+ 
   constructor(private fb:FormBuilder,private cardService:CardServiceService,
               private router:Router,
-              private toastr:ToastrService){
+              private toastr:ToastrService,
+              private subscription:Subscription){
     this.form=this.fb.group({
       id:0,
       userName:['',Validators.required],
@@ -27,9 +29,13 @@ export class CreateUpdateCardComponent {
 
   }
   ngOnInit():void{
-      this.cardService.getCard$().subscribe(data=>{
-        console.log('getting data from list : '+data );
+     this.subscription = this.cardService.getCard$().subscribe(data=>{
+        console.log(data );
       })
+  }
+
+  ngOnDestroy():void{
+    this.subscription.unsubscribe();
   }
 
   saveCard(){

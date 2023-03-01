@@ -40,7 +40,14 @@ export class ListCardComponent {
 
   update(element:Card){
    this.Cardservice.update(element);
+   this.Cardservice._title='Update Card';
    this.router.navigate(['/update']);
+
  
+  }
+
+  new(){
+    this.Cardservice._title='Create New Card';
+    this.router.navigate(['/create']);
   }
 }

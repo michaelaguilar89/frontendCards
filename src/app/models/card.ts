@@ -1,6 +1,6 @@
 
 export class Card{
-    Id?:number;
+    id?:number;
     userName?:String;
     cardNUmber?:String;
     expirationDate?:String

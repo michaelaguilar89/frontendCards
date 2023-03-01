@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto py-3 h-100">
-            <h2>Create Card</h2>
+            <h2>{{title}}</h2>
             <form [formGroup]="form" (ngSubmit)="saveCard()" class="form">
                 <div class="form-floating mb-3">
                         <input type="text" class="form-control" formControlName="userName" placeholder="User Name">

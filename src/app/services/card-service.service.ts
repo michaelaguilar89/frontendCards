@@ -9,10 +9,14 @@ export class CardServiceService {
  private url='https://localhost:5001/api/Card/';
  list:any;
  private updateForm= new BehaviorSubject<Card>({}as any);
-
+ _title:string='Update Card';
 
   constructor(private http:HttpClient) { }
 
+  setTitle(){
+   
+    return this._title;
+  }
   getCards(){
     return this.http.get(this.url);
   }

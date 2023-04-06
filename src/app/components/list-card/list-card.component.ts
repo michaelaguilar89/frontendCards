@@ -21,12 +21,13 @@ export class ListCardComponent {
   
   ngOnInit(){
     try {
-    
+      console.log('antes de 1000 milisegundos');
+       new Promise(f => setTimeout(f, 1000));
+       console.log('despues de 1000 milisegundos');
       this.Cardservice.getCards().subscribe((data=>{
-        //console.log(data)
+       
         this.list={ data }
-        //console.log(this.list);
-        this.showSuccess();
+       this.showSuccess();
         console.log('length : '+this.list.data.result.length)
       })
       )

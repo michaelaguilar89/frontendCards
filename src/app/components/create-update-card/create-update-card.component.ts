@@ -96,6 +96,7 @@ export class CreateUpdateCardComponent implements OnInit,OnDestroy {
   }
 
   goback(){
+   
       this.router.navigate(['/list']);
   }
 

@@ -37,7 +37,11 @@ export class GetByIdRemoveCardComponent implements OnInit{
     }))
   
   }
-
+    remove(){
+      this.cardService.removeCard(this.id).subscribe((data=>{
+       console.log(data); 
+      }))
+    }
   goBack(){
     this.router.navigate(['/list']);
   }

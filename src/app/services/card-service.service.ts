@@ -6,7 +6,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CardServiceService {
- private url='https://localhost:5001/api/Card/';
+ //private url='https://localhost:5001/api/Card/';
+ private url ='http://michaelaguilar89-001-site1.atempurl.com/api/Card/';
  list:any;
  private updateForm= new BehaviorSubject<Card>({}as any);
  _title:string='';
@@ -34,7 +35,7 @@ export class CardServiceService {
     return this.http.get<Card>(this.url+id)
   }
 
-  removeCard(id:number){
+  removeCard(id:number):Observable<Card>{
     return this.http.delete<Card>(this.url+id);
 
   }
